@@ -25,7 +25,9 @@ export default function SetAvatar() {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => {
 		const redirect = async () => {
-			if (!localStorage.getItem("chat-app-user")) navigate("/login");
+			if (!localStorage.getItem("chat-app-user")) {
+				navigate("/login");
+			}
 		};
 		redirect();
 	});
