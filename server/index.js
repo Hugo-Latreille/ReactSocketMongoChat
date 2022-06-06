@@ -17,7 +17,7 @@ mongoose
 	.then(() => {
 		console.log("Connexion à la base de donnée");
 	})
-	.catch((err) => console.error(error));
+	.catch((error) => console.error(error));
 
 app.use("/api/auth", userRoutes);
 
