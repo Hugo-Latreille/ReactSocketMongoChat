@@ -18,6 +18,14 @@ const ChatInput = ({ handleSendMsg }) => {
 		setMsg(message);
 	};
 
+	const sendChat = (e) => {
+		e.preventDefault();
+		if (msg.length > 0) {
+			handleSendMsg(msg);
+			setMsg("");
+		}
+	};
+
 	return (
 		<Container>
 			<div className="button-container">
@@ -26,8 +34,13 @@ const ChatInput = ({ handleSendMsg }) => {
 					{showEmojiPicker && <Picker onEmojiClick={handleEmojiClick} />}
 				</div>
 			</div>
-			<form className="input-container">
-				<input type="text" placeholder="tapez votre message ici" />
+			<form className="input-container" onSubmit={(e) => sendChat(e)}>
+				<input
+					type="text"
+					placeholder="tapez votre message ici"
+					value={msg}
+					onChange={(e) => setMsg(e.target.value)}
+				/>
 				<button className="submit">
 					<IoMdSend />
 				</button>

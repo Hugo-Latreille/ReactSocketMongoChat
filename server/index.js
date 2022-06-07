@@ -3,6 +3,7 @@ dotenv.config();
 const express = require("express");
 const app = express();
 const userRoutes = require("./routes/userRoutes");
+const messageRoutes = require("./routes/messageRoute");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
@@ -20,6 +21,7 @@ mongoose
 	.catch((error) => console.error(error));
 
 app.use("/api/auth", userRoutes);
+app.use("/api/message", messageRoutes);
 
 app.set("port", process.env.PORT);
 app.set("baseUrl", "http://localhost");

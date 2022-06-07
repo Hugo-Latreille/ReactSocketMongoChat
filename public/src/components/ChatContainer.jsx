@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ChatInput from "./ChatInput";
 import Logout from "./Logout";
 import Messages from "./Messages";
+import axios from "axios";
+import { sendMessageRoute } from "../utils/APIroutes";
+import { getAllMessagesRoute } from "../utils/APIroutes";
 
-const ChatContainer = ({ currentChat }) => {
-	const handleSendMessage = async (message) => {};
+const ChatContainer = ({ currentChat, currentUser }) => {
+	const [messages, setMessages] = useState([]);
+
+	useEffect(() => {
+		const fetchCurrentUserMessages = async () => {
+			const response = await axios.post(getAllMessagesRoute, {
+				from: currentUser._id,
+				to: currentChat._id,
+			});
+			setMessages(response.data);
+		};
+
+		fetchCurrentUserMessages();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [currentChat]);
+
+	const handleSendMessage = async (message) => {
+		await axios.post(sendMessageRoute, {
+			from: currentUser._id,
+			to: currentChat._id,
+			message: message,
+		});
+	};
 
 	return (
 		<>
@@ -25,7 +49,26 @@ const ChatContainer = ({ currentChat }) => {
 						</div>
 						<Logout />
 					</div>
-					<Messages />
+					{/* <Messages /> */}
+					<div className="chat-messages">
+						<div className="chat-messages">
+							{messages.map((message) => {
+								return (
+									<div>
+										<div
+											className={`message ${
+												message.fromSelf ? "sended" : "received"
+											}`}
+										>
+											<div className="content ">
+												<p>{message.message}</p>
+											</div>
+										</div>
+									</div>
+								);
+							})}
+						</div>
+					</div>
 					<ChatInput handleSendMsg={handleSendMessage} />
 				</Container>
 			)}
@@ -97,7 +140,7 @@ const Container = styled.div`
 				background-color: #4f04ff21;
 			}
 		}
-		.recieved {
+		.received {
 			justify-content: flex-start;
 			.content {
 				background-color: #9900ff20;

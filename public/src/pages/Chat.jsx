@@ -29,15 +29,13 @@ const Chat = () => {
 	useEffect(() => {
 		const getAllUsers = async () => {
 			if (currentUser) {
-				console.log(currentUser);
 				if (currentUser.isAvatarImageSet) {
 					const { data } = await axios.get(
 						`${allUsersRoute}/${currentUser._id}`
 					);
-					console.log(data);
 					return setContacts(data);
 				}
-				console.log(currentUser);
+
 				navigate("/setAvatar");
 			}
 		};
