@@ -23,7 +23,6 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
 				setMessages(response.data);
 			}
 		};
-
 		fetchCurrentUserMessages();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentChat]);
@@ -38,6 +37,7 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
 			from: currentUser._id,
 			to: currentChat._id,
 			message: message,
+			socketId: socket.current.id,
 		});
 		const msgs = [...messages];
 		msgs.push({ fromSelf: true, message: message });

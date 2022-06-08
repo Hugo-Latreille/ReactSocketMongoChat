@@ -31,8 +31,20 @@ const io = new Server(server, {
 	},
 });
 
-io.on("connection", async (socket) => {
-	socket.on("add-user", (userId) => {});
+const users = {};
+io.on("connection", (socket) => {
+	socket.on("add-user", (userId) => {
+		users[userId] = socket.id;
+		console.log(users);
+	});
+	socket.on("send-msg", (data) => {
+		console.log({ data });
+		const senderSocketId = users[data.to];
+		console.log(senderSocketId);
+		if (senderSocketId) {
+			socket.to(senderSocketId).emit("msg-receive", data.message);
+		}
+	});
 });
 
 app.use("/api/auth", userRoutes);
