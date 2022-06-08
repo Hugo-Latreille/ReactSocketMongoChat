@@ -7,6 +7,7 @@ import { allUsersRoute } from "../utils/APIroutes";
 import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
 import ChatContainer from "../components/ChatContainer";
+// import { io } from "socket.io-client";
 
 const Chat = () => {
 	const [contacts, setContacts] = useState([]);
@@ -14,6 +15,7 @@ const Chat = () => {
 	const [currentChat, setCurrentChat] = useState(undefined);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const navigate = useNavigate();
+	// const socket = io("http://localhost:8888");
 
 	useEffect(() => {
 		const getCurrentUser = async () => {
