@@ -1,6 +1,6 @@
 // export const host = "http://localhost:8888";
 // export const host = `http://localhost:${process.env.PORT}`
-export const host = `http://localhost`;
+export const host = `https://reactsocketchat.herokuapp.com/`;
 
 export const registerRoute = `${host}/api/auth/register`;
 export const loginRoute = `${host}/api/auth/login`;
