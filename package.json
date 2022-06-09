@@ -1,6 +1,10 @@
 {
 	"name": "chatreactsocketmongo",
 	"version": "1.0.0",
+	"engines": {
+		"node": "16",
+		"npm": "8.5"
+	},
 	"scripts": {
 		"deploy": "git push heroku main",
 		"heroku-prebuild": "npm ci --prefix public --include=dev && npm ci --prefix server --include=dev",
