@@ -30,7 +30,7 @@ mongoose
 
 const io = new Server(server, {
 	cors: {
-		origin: ["http://localhost:3000"],
+		origin: ["http://localhost:3000", `http://localhost:${process.env.PORT}`],
 		credentials: true,
 	},
 });
@@ -54,7 +54,7 @@ io.on("connection", (socket) => {
 app.use("/api/auth", userRoutes);
 app.use("/api/message", messageRoutes);
 
-app.set("port", process.env.PORT);
+app.set("port", process.env.PORT || 8888);
 app.set("baseUrl", "http://localhost");
 
 server.listen(app.get("port"), () => {
