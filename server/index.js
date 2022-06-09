@@ -7,9 +7,12 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
+const path = require("path");
 
 const app = express();
 const server = createServer(app);
+
+app.use(express.static(path.resolve(__dirname, "./../public/build")));
 
 app.use(cors("*"));
 app.use(express.json());
@@ -23,6 +26,7 @@ mongoose
 		console.log("Connexion à la base de donnée");
 	})
 	.catch((error) => console.error(error));
+//MONGO_URL=mongodb://localhost/chat
 
 const io = new Server(server, {
 	cors: {

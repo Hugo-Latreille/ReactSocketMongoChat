@@ -1,1 +1,12 @@
-{}
+{
+	"name": "chatreactsocketmongo",
+	"version": "1.0.0",
+	"scripts": {
+		"deploy": "git push heroku main",
+		"heroku-prebuild": "npm ci --prefix public --include=dev && npm ci --prefix server --include=dev",
+		"build": "npm run build --prefix public",
+		"start": "npm run start --prefix server"
+	},
+	"author": "hugo.latreille@gmail.com",
+	"license": "ISC"
+}
