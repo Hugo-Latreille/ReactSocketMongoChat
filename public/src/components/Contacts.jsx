@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Logo from "./../assets/logo.svg";
+import Logo2 from "./../assets/image.png";
 
 const Contacts = ({ contacts, currentUser, changeChat }) => {
 	const [currentUserName, setCurrentUserName] = useState(undefined);
@@ -24,8 +25,8 @@ const Contacts = ({ contacts, currentUser, changeChat }) => {
 			{currentUserImage && currentUserName && (
 				<Container>
 					<div className="brand">
-						<img src={Logo} alt="logo" />
-						<h3>Snappy</h3>
+						<img src={Logo2} alt="logo" />
+						<h3>Develott</h3>
 					</div>
 					<div className="contacts">
 						{contacts.map((contact, index) => {
@@ -78,7 +79,8 @@ const Container = styled.div`
 		gap: 1rem;
 		justify-content: center;
 		img {
-			height: 2rem;
+			height: 5rem;
+			display: block;
 		}
 		h3 {
 			color: white;
