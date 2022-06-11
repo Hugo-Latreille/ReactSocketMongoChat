@@ -82,7 +82,7 @@ const Register = () => {
 				<form onSubmit={(e) => handleSubmit(e)}>
 					<div className="brand">
 						<img src={Logo2} alt="logo" />
-						<h1>Snappy</h1>
+						<h1>Develott</h1>
 					</div>
 					<input
 						type="text"
