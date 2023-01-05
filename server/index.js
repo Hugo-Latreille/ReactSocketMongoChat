@@ -30,7 +30,11 @@ mongoose
 
 const io = new Server(server, {
 	cors: {
-		origin: ["http://localhost:3000", `https://reactsocketchat.herokuapp.com/`],
+		origin: [
+			"http://localhost:3000",
+			`https://reactsocketchat.herokuapp.com/`,
+			`https://chat.hugolatreille.dev`,
+		],
 		credentials: true,
 	},
 });
