@@ -62,13 +62,3 @@ server.listen(app.get("port"), () => {
 		`Le serveur est lancé sur : ${app.get("baseUrl")}:${server.address().port}`
 	);
 });
-
-// if (typeof PhusionPassenger !== "undefined") {
-// 	PhusionPassenger.configure({ autoInstall: false });
-// }
-
-// if (typeof PhusionPassenger !== "undefined") {
-// 	app.listen("passenger");
-// } else {
-// 	server.listen(8000);
-// }
