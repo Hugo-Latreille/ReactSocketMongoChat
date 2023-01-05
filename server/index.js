@@ -30,11 +30,7 @@ mongoose
 
 const io = new Server(server, {
 	cors: {
-		origin: [
-			"http://localhost:3000",
-			`https://reactsocketchat.herokuapp.com/`,
-			`https://chat.hugolatreille.dev`,
-		],
+		origin: ["http://localhost:3000", `https://chat.hugolatreille.dev`],
 		credentials: true,
 	},
 });
@@ -58,21 +54,21 @@ io.on("connection", (socket) => {
 app.use("/api/auth", userRoutes);
 app.use("/api/message", messageRoutes);
 
-// app.set("port", process.env.PORT || 8888);
-// app.set("baseUrl", "http://localhost");
+app.set("port", process.env.PORT || 8888);
+app.set("baseUrl", "http://localhost");
 
-// server.listen(app.get("port"), () => {
-// 	console.log(
-// 		`Le serveur est lancé sur : ${app.get("baseUrl")}:${server.address().port}`
-// 	);
-// });
+server.listen(app.get("port"), () => {
+	console.log(
+		`Le serveur est lancé sur : ${app.get("baseUrl")}:${server.address().port}`
+	);
+});
 
-if (typeof PhusionPassenger !== "undefined") {
-	PhusionPassenger.configure({ autoInstall: false });
-}
+// if (typeof PhusionPassenger !== "undefined") {
+// 	PhusionPassenger.configure({ autoInstall: false });
+// }
 
-if (typeof PhusionPassenger !== "undefined") {
-	app.listen("passenger");
-} else {
-	app.listen(3000);
-}
+// if (typeof PhusionPassenger !== "undefined") {
+// 	app.listen("passenger");
+// } else {
+// 	server.listen(8000);
+// }
